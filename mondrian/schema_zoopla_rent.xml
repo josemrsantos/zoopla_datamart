@@ -1,0 +1,56 @@
+<Schema name="zoopla_rent">
+  <Cube name="zoopla_rent" visible="true" cache="true" enabled="true">
+    <Table name="fact_rent_house" schema="public">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_agent_name" highCardinality="false" name="Agent name">
+      <Hierarchy name="Agent name" visible="true" hasAll="true">
+        <Table name="dim_agent_name" schema="public">
+        </Table>
+        <Level name="agent name" visible="true" table="dim_agent_name" column="id_agent_name" nameColumn="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_num_bathroom" highCardinality="false" name="Num bathrooms">
+      <Hierarchy name="Num bathroom" visible="true" hasAll="true">
+        <Table name="dim_num_bathrooms" schema="public">
+        </Table>
+        <Level name="num bathrooms" visible="true" table="dim_num_bathrooms" column="id_num_bathroom" nameColumn="name" ordinalColumn="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_num_bedrooms" highCardinality="false" name="Num bedrooms">
+      <Hierarchy name="Num bedroom" visible="true" hasAll="true">
+        <Table name="dim_num_bedrooms" schema="public">
+        </Table>
+        <Level name="num bedrooms" visible="true" table="dim_num_bedrooms" column="id_num_bedrooms" nameColumn="name" ordinalColumn="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_num_floors" highCardinality="false" name="Num floors">
+      <Hierarchy name="Num floors" visible="true" hasAll="true">
+        <Table name="dim_num_floors" schema="public">
+        </Table>
+        <Level name="num floors" visible="true" table="dim_num_floors" column="id_num_floors" nameColumn="name" ordinalColumn="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_price_range" highCardinality="false" name="Price range">
+      <Hierarchy name="Price range" visible="true" hasAll="true">
+        <Table name="dim_price_range" schema="public">
+        </Table>
+        <Level name="price range" visible="true" table="dim_price_range" column="id_price_range" nameColumn="name" ordinalColumn="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_property_type" highCardinality="false" name="Property type">
+      <Hierarchy name="Property type" visible="true" hasAll="true">
+        <Table name="dim_property_type" schema="public">
+        </Table>
+        <Level name="property type" visible="true" table="dim_property_type" column="id_property_type" nameColumn="name" ordinalColumn="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Number of houses" column="id" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
